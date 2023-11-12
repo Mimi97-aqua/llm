@@ -1,1 +1,1 @@
-### Welcome to my CocoBot
+### Welcome to CocoBot
