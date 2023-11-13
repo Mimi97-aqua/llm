@@ -40,7 +40,7 @@ async def main(message: cl.Message):
     await cl.Message(content=f"{response.choices[0].message.content}").send()
 ```
 3. **LangChain Integration:**
-   * **Test Integration using PromptTemplate:**
+   * _**Test Integration using PromptTemplate:**_
    ```angular2html
     import chainlit as cl
     import os
