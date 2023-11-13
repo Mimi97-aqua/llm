@@ -15,14 +15,14 @@ async def main(message: cl.Message):
     response = client.chat.completions.create(
         model='gpt-3.5-turbo',
         temperature=1,
-        messages=json.dumps([
+        messages=[
             {'role': 'assistant', 'content': 'You are a helpful assistant'},
             {'role': 'user', 'content': message.content}
-        ])
+        ]
     )
 
     # return everything that the user enters
-    await cl.Message(content=f' {message.content}', ).send()
+    await cl.Message(content=f"{response.choices[0].message.content}").send()
 
     # reply = response['choices'][0]['message']['content']
     # print(reply)
