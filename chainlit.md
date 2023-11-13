@@ -1,1 +1,1 @@
-### Welcome to CocoBot
+#### Hi, I am CocoBot! I would like to assist you today. Please proceed with a prompt.
