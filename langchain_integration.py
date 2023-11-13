@@ -29,7 +29,7 @@ def main():
 
 
 @cl.on_message
-async def main(message: cl.Message):
+async def main_1(message: cl.Message):
     llm_chain = cl.user_session.get('llm_chain')
 
     # Initial answer
