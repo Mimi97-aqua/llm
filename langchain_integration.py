@@ -7,8 +7,16 @@ from langchain.chains import LLMChain
 from langchain.llms.openai import OpenAI
 
 template = """ 
-    Question: {question}
-    Answer: Let's think step by step
-    """
+        Question: {question}
+        Answer: Let's think step by step
+        """
 
-print(template.format(question='What is 1+1'))
+@cl.on_chat_start
+def main():
+    # Variables to initiate as soon as chainlit UI is deployed
+    prompt = PromptTemplate(template=template, input_variables=['question'])
+    llm_chain =
+
+    cl.user_session.set('llm_chain', llm_chain)
+
+@cl.on_message
