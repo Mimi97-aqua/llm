@@ -12,7 +12,7 @@ async def main(message: cl.Message):
     await cl.Message(
         content=f' {message.content}', ).send()
 ```
-2. **Pass the message into the ChatGPT API:**
+2. **Pass the message into the ChatGPT API (Chat Completion):**
 ```angular2html
 import chainlit as cl
 import os
@@ -39,3 +39,21 @@ async def main(message: cl.Message):
     # return everything that the user enters
     await cl.Message(content=f"{response.choices[0].message.content}").send()
 ```
+3. **LangChain Integration:**
+   * **Test Integration using PromptTemplate:**
+   ```angular2html
+    import chainlit as cl
+    import os
+    import openai
+    from openai import OpenAI
+    from langchain.prompts import PromptTemplate
+    from langchain.chains import LLMChain
+    from langchain.llms.openai import OpenAI
+    
+    template = """ 
+        Question: {question}
+        Answer: Let's think step by step
+        """
+    
+    print(template.format(question='What is 1+1'))
+    ```
