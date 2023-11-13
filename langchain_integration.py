@@ -15,8 +15,19 @@ template = """
 def main():
     # Variables to initiate as soon as chainlit UI is deployed
     prompt = PromptTemplate(template=template, input_variables=['question'])
-    llm_chain =
+    llm_chain = LLMChain(
+        prompt = prompt,
+        llm = OpenAI(temperature=1, streaming=True),
+        verbose = True
+    )
 
     cl.user_session.set('llm_chain', llm_chain)
 
+
 @cl.on_message
+async def main(message: cl.Message):
+    llm_chain = cl.user_session.get('llm_chain')
+
+    result = await llm_chain.acall(message, callbacks=[cl.AsyncLangchainCallbackHandler()])
+
+    await cl.Message(content=result['text']).send()
