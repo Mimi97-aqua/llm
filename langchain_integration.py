@@ -36,7 +36,7 @@ async def main_1(message: cl.Message):
     answer = ''
 
     # Processing user's input
-    result = await llm_chain.acall(message, callbacks=[cl.AsyncLangchainCallbackHandler()])
+    result = await llm_chain.acall({'question': message.content, 'answer': ''}, callbacks=[cl.AsyncLangchainCallbackHandler()])
 
     # Get generated answer from result
     if 'text' in result:
