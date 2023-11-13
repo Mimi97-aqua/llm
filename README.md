@@ -1,5 +1,5 @@
-# llm
-Large Language Models tutorial
+# LLM
+Large Language Models [Tutorial](https://youtu.be/xZDB1naRUlk?si=IxDqmmd35XrimPDJ)
 
 ## Stages
 1. **Return everything the user inputs:**
