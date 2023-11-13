@@ -1,6 +1,5 @@
 import chainlit as cl
 import os
-import json
 from openai import OpenAI
 from dotenv import load_dotenv
 
@@ -21,7 +20,7 @@ async def main(message: cl.Message):
         ]
     )
 
-    # return everything that the user enters
+    # get response from the chat-gpt api
     await cl.Message(content=f"{response.choices[0].message.content}").send()
 
     # reply = response['choices'][0]['message']['content']
