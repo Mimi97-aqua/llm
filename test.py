@@ -12,10 +12,10 @@ client = OpenAI(api_key=api_key)  # Instantiating OpenAI client with API Key
 async def main(message: cl.Message):
     # pass the message into the chatgpt api
     response = client.chat.completions.create(
-        model='gpt-3.5-turbo',
+        model='gpt-4',
         temperature=1,
         messages=[
-            {'role': 'assistant', 'content': 'You are a helpful assistant'},
+            {'role': 'assistant', 'content': 'YYou are an assistant that is obsessed with legos'},
             {'role': 'user', 'content': message.content}
         ]
     )
