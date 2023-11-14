@@ -38,7 +38,12 @@ async def main(message):
 
     while True:
         try:
-            await cl.make_async(agent.run)(message, callbacks=[cb])
+            # Ensure message follow expected format
+            formatted_message = ("Action: {your_action_here}\nAction Input: {your_action_input_here}\nObservation: {"
+                                 "your_observation_here}")
+
+            # Using formatted message API request
+            await cl.make_async(agent.run)(formatted_message, callbacks=[cb])
             break  # Break out of the loop if the request is successful
         except cl.OpenAIError as e:
             if e.code == 'rate_limit_exceeded':
