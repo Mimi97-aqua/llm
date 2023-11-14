@@ -36,11 +36,16 @@ async def main(message):
     agent = cl.user_session.get("agent")  # type: AgentExecutor
     cb = cl.LangchainCallbackHandler(stream_final_answer=True)
 
+    action = 'arxiv'
+    action_input = 'What is RLHF?'
+    observation = "I'm interested in the meaning of the acronym."
+
     while True:
         try:
             # Ensure message follow expected format
-            formatted_message = ("Action: {your_action_here}\nAction Input: {your_action_input_here}\nObservation: {"
-                                 "your_observation_here}")
+            formatted_message = (f"Action: {action},"
+                                 f"Action Input: {action_input},"
+                                 f" Observation: {observation}")
 
             # Using formatted message API request
             await cl.make_async(agent.run)(formatted_message, callbacks=[cb])
