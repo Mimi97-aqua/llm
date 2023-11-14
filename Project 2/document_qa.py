@@ -14,9 +14,17 @@ load_dotenv()
 api_key = os.getenv('OPENAI_API_KEY')
 openai = OpenAI(api_key=api_key)
 
+
+class MyOpenAIEmbeddings(OpenAIEmbeddings):
+    def embed_query(self, query):
+        if not isinstance(query, str):
+            query = str(query)
+        return self.embed_documents([query])[0]
+
+
 # Split text
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)  # Chunk size = 1000 characters
-embeddings = OpenAIEmbeddings()  # Uses Ada2 Model
+embeddings = MyOpenAIEmbeddings()  # Uses Ada2 Model
 
 welcome_message = """
 Welcome to the Chainlit PDF QA demo! To get started:
