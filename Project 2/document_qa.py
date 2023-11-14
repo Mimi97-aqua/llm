@@ -15,6 +15,7 @@ api_key = os.getenv('OPENAI_API_KEY')
 openai = OpenAI(api_key=api_key)
 
 
+# Class extension
 class MyOpenAIEmbeddings(OpenAIEmbeddings):
     def embed_query(self, query):
         if not isinstance(query, str):
