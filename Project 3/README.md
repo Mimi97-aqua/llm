@@ -6,7 +6,7 @@ GPT Researcher
 
 **_Tools:_**
 * Arxiv
-* Human as a tool
+* Human as a tool: Correcting your model when it makes a mistakes by talking to it rather than changing your parameters.
 
 ## Stages
 1. **Getting Started with Language Understanding Tools (Arxiv):**
