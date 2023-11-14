@@ -43,10 +43,10 @@ Large Language Models [Tutorial](https://youtu.be/xZDB1naRUlk?si=IxDqmmd35XrimPD
   * Pinecone
   * LLM
 * **_Process:_**
-  * The document gets passed into a text splitter
+  * The document gets passed into a text splitter. (Splits into chunks)
   * The document is passed into an embedding generator
   * The embeddings are stored in the database
     * **_Note:_** An embedding provides a way to represent and work with complex data in a meanngful way and in a high dimensional space.
   * It is queried and the vector_db finds the closest set of 10 sentences to the query using cosine similarity
   * The 10 sentences alongside the query are wrapped into the Q&A model(eg. GPT-3)
-  * We ask the model a question and it gives us the answer as output
+  * We ask the model a question, and it gives us the answer as output
