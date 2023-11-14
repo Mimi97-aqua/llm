@@ -35,3 +35,4 @@ Large Language Models [Tutorial](https://youtu.be/xZDB1naRUlk?si=IxDqmmd35XrimPD
     print(results)
     ```
    * **_Cosine similarity_** is used to measure the similarity between the vectors of the query and the vectors of the documents in the database. Through this, documents are ranked based o similarity and the first result is given (that with the top most similarity.)
+   * **_Note:_** In the case where more than 1 result is required, the document with the smallest distance is the one with the top-most similarity.
