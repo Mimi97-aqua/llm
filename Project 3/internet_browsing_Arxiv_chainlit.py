@@ -34,8 +34,11 @@ async def main(message):
     agent = cl.user_session.get("agent")  # type: AgentExecutor
     cb = cl.LangchainCallbackHandler(stream_final_answer=True)
 
+    # Get user input/prompt
+    user_question = message.content
+
     action = 'arxiv'
-    action_input = ''
+    action_input = user_question
     observation = "I'm interested in getting more information about it."
 
     while True:
