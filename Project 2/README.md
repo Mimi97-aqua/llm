@@ -43,7 +43,7 @@ Large Language Models [Tutorial](https://youtu.be/xZDB1naRUlk?si=IxDqmmd35XrimPD
   * Pinecone
   * LLM
 * **_Process:_**
-  * The document gets passed into a text splitter. (Splits into chunks)
+  * The document gets passed into a text splitter. (Splits into chunks -> a continguous sequence of words/tokens. Process begins with tokenization.)
   * The document is passed into an embedding generator
   * The embeddings are stored in the database
     * **_Note:_** An embedding provides a way to represent and work with complex data in a meanngful way and in a high dimensional space.
