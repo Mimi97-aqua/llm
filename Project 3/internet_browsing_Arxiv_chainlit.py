@@ -1,4 +1,3 @@
-from langchain import OpenAI, LLMMathChain, SerpAPIWrapper
 from langchain.agents import initialize_agent, Tool, AgentExecutor
 from langchain.chat_models import ChatOpenAI
 from langchain.agents import load_tools, initialize_agent, AgentType
@@ -47,6 +46,10 @@ async def main(message):
                 print("Rate limit exceeded. Waiting for 20 seconds...")
                 time.sleep(20)
             else:
-                # Handle other OpenAI errors
+                # Print the error details
                 print(f"OpenAI Error: {e}")
+                print(f"Error message: {e.message}")
+                print(f"Error code: {e.code}")
+                print(f"Error type: {e.type}")
+                print(f"Error param: {e.param}")
                 break
