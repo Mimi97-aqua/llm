@@ -23,6 +23,7 @@ Welcome to the Chainlit PDF QA demo! To get started:
 """
 
 
+# Function to process file and split it into chunks
 def process_file(file: AskFileResponse):
     import tempfile
 
@@ -43,7 +44,7 @@ def process_file(file: AskFileResponse):
         return docs
 
 
-# Retrieve data from embeddings
+# Function to retrieve data from embeddings and create a Chroma vector store
 def get_docsearch(file: AskFileResponse):
     docs = process_file(file)
 
@@ -58,6 +59,7 @@ def get_docsearch(file: AskFileResponse):
 
 
 # Chain UI User Interaction functionality
+# Function to handle start of the chat session
 @cl.on_chat_start
 async def start():
     # Sending image with local file path
@@ -93,6 +95,7 @@ async def start():
     cl.user_session.set("chain", chain)
 
 
+# Function to handle incoming messages and provide responses
 @cl.on_message
 async def main(message):
     chain = cl.user_session.get("chain")  # type: RetrievalQAWithSourcesChain
