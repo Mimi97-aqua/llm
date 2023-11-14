@@ -2,6 +2,7 @@
 Large Language Models [Tutorial](https://youtu.be/xZDB1naRUlk?si=IxDqmmd35XrimPDJ)
 
 ### Project 2
+Document Based QA System
 
 ## Stages
 1. **Basic Intro to Chroma DB:**
