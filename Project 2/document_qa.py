@@ -35,3 +35,16 @@ def process_file(file: AskFileResponse):
         for i, doc in enumerate(docs):
             doc.metadata('source') = f'source_{i}'
         return docs
+
+
+def get_docsearch(file: AskFileResponse):
+    docs = process_file(file)
+
+    # Save data in user session
+    cl.user_session.set('docs', docs)
+
+    # Create unique namespaces for file
+    docsearch = Chroma.from_documents(
+        docs, embeddings
+    )
+    return docsearch
