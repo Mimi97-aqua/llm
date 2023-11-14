@@ -42,5 +42,5 @@ async def main_1(message: cl.Message):
     if 'text' in result:
         answer = result['text']
 
-    # Send respond back to user
+    # Send response back to user
     await cl.Message(content=answer).send()
