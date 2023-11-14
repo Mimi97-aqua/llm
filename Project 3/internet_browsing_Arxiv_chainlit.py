@@ -51,7 +51,7 @@ async def main(message):
             # Using formatted message API request
             await cl.make_async(agent.run)(formatted_message, callbacks=[cb])
             break  # Break out of the loop if the request is successful
-        except cl.OpenAIError as e
+        except cl.OpenAIError as e:
             if e.code == 'rate_limit_exceeded':
                 # If rate limit exceeded, wait for 20 seconds and retry
                 print("Rate limit exceeded. Waiting for 20 seconds...")
