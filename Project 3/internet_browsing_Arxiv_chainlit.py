@@ -15,9 +15,7 @@ openai = OpenAI(api_key=api_key)
 @cl.on_chat_start
 def start():
     llm = ChatOpenAI(temperature=0.5, streaming=True)
-    tools = load_tools(
-        ["arxiv"]
-    )
+    tools = load_tools(["arxiv"])
 
     agent_chain = initialize_agent(
         tools,
@@ -37,8 +35,8 @@ async def main(message):
     cb = cl.LangchainCallbackHandler(stream_final_answer=True)
 
     action = 'arxiv'
-    action_input = 'What is RLHF?'
-    observation = "I'm interested in the meaning of the acronym."
+    action_input = ''
+    observation = "I'm interested in getting more information about it."
 
     while True:
         try:
@@ -50,7 +48,7 @@ async def main(message):
             # Using formatted message API request
             await cl.make_async(agent.run)(formatted_message, callbacks=[cb])
             break  # Break out of the loop if the request is successful
-        except cl.OpenAIError as e:
+        except cl.OpenAIError as e
             if e.code == 'rate_limit_exceeded':
                 # If rate limit exceeded, wait for 20 seconds and retry
                 print("Rate limit exceeded. Waiting for 20 seconds...")
