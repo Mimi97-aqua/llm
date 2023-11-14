@@ -40,7 +40,7 @@ def process_file(file: AskFileResponse):
 
         # Labelling chunks as sources
         for i, doc in enumerate(docs):
-            doc.metadata('source') = f'source_{i}'
+            doc.metadata['source'] = f'source_{i}'
         return docs
 
 
@@ -65,6 +65,7 @@ async def start():
     # Sending image with local file path
     await cl.Message(content='Welcome! You can now chat with your PDFs').send()
 
+    # File processing and chain initialization
     files = None
     while files is None:
         files = await cl.AskFileMessage(
