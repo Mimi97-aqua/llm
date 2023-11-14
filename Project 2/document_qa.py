@@ -8,6 +8,7 @@ from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.chat_models import ChatOpenAI
 from chainlit.types import AskFileResponse
 
+# Split text
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)  # Chunk size = 1000 characters
 embeddings = OpenAIEmbeddings()  # Uses Ada2 Model
 
@@ -37,6 +38,7 @@ def process_file(file: AskFileResponse):
         return docs
 
 
+# Retrieve data from embeddings
 def get_docsearch(file: AskFileResponse):
     docs = process_file(file)
 
