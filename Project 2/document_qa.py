@@ -8,9 +8,11 @@ from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.chat_models import ChatOpenAI
 from chainlit.types import AskFileResponse
 from dotenv import load_dotenv
+from openai import OpenAI
 
 load_dotenv()
 api_key = os.getenv('OPENAI_API_KEY')
+openai = OpenAI(api_key=api_key)
 
 # Split text
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)  # Chunk size = 1000 characters
@@ -36,6 +38,10 @@ def process_file(file: AskFileResponse):
         tempfile.write(file.content)
         loader = Loader(tempfile.name)
         documents = loader.load()
+
+        # Print or log the content of the loaded document
+        print('Loaded document content:', documents)
+
         docs = text_splitter.split_documents(documents)
 
         # Labelling chunks as sources
@@ -82,6 +88,10 @@ async def start():
 
     # No async implementation in the Pinecone client, fallback to sync
     docsearch = await cl.make_async(get_docsearch)(file)
+
+    # Print or log the content of the processed documents
+    docs = cl.user_session.get('docs')
+    print('Processed Document Content:', [doc.page_content for doc in docs])
 
     chain = RetrievalQAWithSourcesChain.from_chain_type(
         ChatOpenAI(temperature=0, streaming=True),
