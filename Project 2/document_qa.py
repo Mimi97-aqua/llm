@@ -7,6 +7,10 @@ from langchain.vectorstores import Chroma
 from langchain.chains import RetrievalQAWithSourcesChain
 from langchain.chat_models import ChatOpenAI
 from chainlit.types import AskFileResponse
+from dotenv import load_dotenv
+
+load_dotenv()
+api_key = os.getenv('OPENAI_API_KEY')
 
 # Split text
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)  # Chunk size = 1000 characters
@@ -33,6 +37,7 @@ def process_file(file: AskFileResponse):
         documents = loader.load()
         docs = text_splitter.split_documents(documents)
 
+        # Labelling chunks as sources
         for i, doc in enumerate(docs):
             doc.metadata('source') = f'source_{i}'
         return docs
@@ -51,12 +56,14 @@ def get_docsearch(file: AskFileResponse):
     )
     return docsearch
 
+
+# Chain UI User Interaction functionality
 @cl.on_chat_start
 async def start():
     # Sending image with local file path
-    await cl.Message(content='You can now chat with your PDFs').send()
-    files = None
+    await cl.Message(content='Welcome! You can now chat with your PDFs').send()
 
+    files = None
     while files is None:
         files = await cl.AskFileMessage(
             content=welcome_message,
