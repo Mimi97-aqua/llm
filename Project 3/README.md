@@ -34,5 +34,4 @@ agent_chain = initialize_agent(
 agent_chain.run(
     'What is RLHF?'
 )
-
 ```
