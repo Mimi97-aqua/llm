@@ -9,6 +9,7 @@ GPT Researcher
 * Human as a tool: Correcting your model when it makes a mistakes by talking to it rather than changing your parameters.
 * LLM Math tool
 * Python Replit tool
+* YouTube Search tool
 
 ## Stages
 1. **Getting Started with Language Understanding Tools (Arxiv):**
