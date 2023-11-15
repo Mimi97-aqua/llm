@@ -14,7 +14,7 @@ api_key = os.getenv('OPENAI_API_KEY')
 
 
 def multiplier(a, b):
-    return a / b
+    return a * b
 
 
 def parsing_multiplier(string):
