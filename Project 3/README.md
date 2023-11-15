@@ -7,6 +7,8 @@ GPT Researcher
 **_Tools:_**
 * Arxiv
 * Human as a tool: Correcting your model when it makes a mistakes by talking to it rather than changing your parameters.
+* LLM Math tool
+* Python Replit tool
 
 ## Stages
 1. **Getting Started with Language Understanding Tools (Arxiv):**
@@ -135,4 +137,28 @@ agent_chain = initialize_agent(
 )
 
 agent_chain.run("what is my math problem and its solution")
+```
+4. **Testing the python_replit tool:**
+```python
+from langchain_experimental.agents.agent_toolkits import create_python_agent
+from langchain_experimental.tools.python.tool import PythonREPLTool
+from langchain.python import PythonREPL
+from langchain.llms.openai import OpenAI
+from langchain.agents.agent_types import AgentType
+from langchain.chat_models import ChatOpenAI
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+api_key = os.getenv('OPENAI_API_KEY')
+
+
+agent_executor = create_python_agent(
+    llm=OpenAI(temperature=0.5, max_tokens=2000),
+    tool=PythonREPLTool(),
+    verbose=True,
+    agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+)
+
+agent_executor.run("What is the 10th fibonacci number?")
 ```
